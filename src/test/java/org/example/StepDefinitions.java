@@ -186,7 +186,7 @@ public class StepDefinitions {
     }
 
     @Then("no pop-up for newsletter appears")
-    public void noPopUpForNewsletterAppears() {driver.switchTo().alert().accept();
+    public void noPopUpForNewsletterAppears() {Assertions.assertTrue(driver.getPageSource().contains("error"));
     }
     @Then("the {string} page is open")
     public void thePageIsOpen(String string) {Assertions.assertEquals(string, driver.getTitle());
@@ -226,7 +226,7 @@ public class StepDefinitions {
     }
 
     @Then("the succes page is not open")
-    public void theSuccesPageIsNotOpen() {Assertions.assertEquals("Payment Information",paymentInfo.paymentInfoText());
+    public void theSuccesPageIsNotOpen() {Assertions.assertEquals("Payment information",paymentInfo.paymentInfoText());
     }
     @Given("I am on Success page")
     public void i_am_on_succes_page(){

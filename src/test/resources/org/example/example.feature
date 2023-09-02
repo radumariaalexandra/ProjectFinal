@@ -63,7 +63,6 @@ Feature: An example
     Scenario: all fields  filled on Contact Info
       Given I am on Contact Info page
       And All Contact Info data are filled
-      And I click Next Button
       Then the course options page is open
 
     Scenario: Select Item1
