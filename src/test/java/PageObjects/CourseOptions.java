@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CourseOptions {
 
-    @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/div[1]/label")
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/div[1]")
     private WebElement submitItem1;
 
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/button[2]")

@@ -68,7 +68,7 @@ Feature: An example
     Scenario: Select Item1
       Given I am o Course Options page
       And I select Item 1
-      And I click Next Button
+      And I click Next button for course options
       Then the payment information page is open
 
   Scenario: Without Selecting any Item

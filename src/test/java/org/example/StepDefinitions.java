@@ -2,10 +2,13 @@ package org.example;
 
 import PageObjects.*;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assertions.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -151,7 +154,7 @@ public class StepDefinitions {
         courseOptions.setSubmitButtonNext();
     }
 
-    @When("I click Next buton")
+    @When("I click Next button for course options")
     public void input_click_next_button(){courseOptions.setSubmitButtonNext();}
 
     //payment info
@@ -205,11 +208,11 @@ public class StepDefinitions {
     }
 
     @Then("the course options page is open")
-    public void theCourseOptionsPageIsOpen() {Assertions.assertEquals("Course Option",courseOptions.courseOptionText());
+    public void theCourseOptionsPageIsOpen() {Assertions.assertEquals("Course options",courseOptions.courseOptionText());
     }
 
     @Then("the payment information page is open")
-    public void thePaymentInformationPageIsOpen() {Assertions.assertEquals("Payment Information", paymentInfo.paymentInfoText());
+    public void thePaymentInformationPageIsOpen() {Assertions.assertEquals("Payment information", paymentInfo.paymentInfoText());
     }
 
     @Then("the succes page is open")
@@ -246,7 +249,11 @@ public class StepDefinitions {
     }
 
     @After
-    public void cleanUp() {
+    public void cleanUp(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/jpg", "");
+        }
         driver.quit();
     }
 }
